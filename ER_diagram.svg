@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1200"
+   height="900"
+   version="1.1"
+   id="svg64"
+   sodipodi:docname="ER_diagram.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   inkscape:export-filename="ER_diagram.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs64">
+    <marker
+       style="overflow:visible"
+       id="marker75"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="2"
+       markerHeight="2"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path75" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="2"
+       markerHeight="2"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="namedview64"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.86345594"
+     inkscape:cx="556.48468"
+     inkscape:cy="429.08964"
+     inkscape:window-width="2160"
+     inkscape:window-height="1334"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg64"
+     inkscape:export-bgcolor="#ffffffff" />
+  <style
+     id="style1">
+        .entity {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+        }
+        .weak-entity {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+            stroke-dasharray: 5,2;
+        }
+        .attribute {
+            fill: white;
+            stroke: black;
+            stroke-width: 1;
+        }
+        .multi-attribute {
+            fill: white;
+            stroke: black;
+            stroke-width: 2;
+            stroke-dasharray: 5,2;
+        }
+        .relationship {
+            fill: white;
+            stroke: black;
+            stroke-width: 1;
+        }
+        .line {
+            stroke: black;
+            stroke-width: 1;
+        }
+        .double-line {
+            stroke: black;
+            stroke-width: 2;
+            stroke-dasharray: none;
+        }
+        .text {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+    </style>
+  <!-- 用户实体 -->
+  <rect
+     x="292.43228"
+     y="300.1405"
+     width="120"
+     height="60"
+     class="entity"
+     id="rect1" />
+  <text
+     x="352.43228"
+     y="330.1405"
+     class="text"
+     id="text1"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan77">User</tspan></text>
+  <!-- 用户属性 -->
+  <g
+     id="g64"
+     transform="translate(72.368565,4.6446001)">
+    <ellipse
+       cx="90"
+       cy="250"
+       rx="60"
+       ry="25"
+       class="attribute"
+       id="ellipse1" />
+    <text
+       x="90"
+       y="250"
+       class="text underline"
+       id="text2"
+       style="text-decoration:underline;text-decoration-line:underline"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+         id="tspan65">user_id</tspan></text>
+  </g>
+  <line
+     x1="217.12425"
+     y1="265.57986"
+     x2="291.59833"
+     y2="302.97684"
+     class="line"
+     id="line2" />
+  <g
+     id="g65"
+     inkscape:transform-center-x="0.40946302"
+     inkscape:transform-center-y="-2.4567789"
+     transform="translate(92.432259,0.14050553)">
+    <ellipse
+       cx="114.37671"
+       cy="200"
+       rx="50"
+       ry="25"
+       class="attribute"
+       id="ellipse2" />
+  </g>
+  <text
+     x="208.03734"
+     y="200.54997"
+     class="text"
+     id="text3"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan66">username</tspan></text>
+  <line
+     x1="234.75951"
+     y1="220.23796"
+     x2="302.26151"
+     y2="300.04303"
+     class="line"
+     id="line3"
+     style="stroke-width:1.097;stroke-dasharray:none" />
+  <ellipse
+     cx="296.39951"
+     cy="153.35251"
+     rx="70"
+     ry="25"
+     class="attribute"
+     id="ellipse3" />
+  <text
+     x="299.26578"
+     y="154.5809"
+     class="text"
+     id="text4"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan67">password_hash</tspan></text>
+  <line
+     x1="321.58151"
+     y1="177.53358"
+     x2="321.58151"
+     y2="300.1405"
+     class="line"
+     id="line4" />
+  <ellipse
+     cx="372.47778"
+     cy="230.23604"
+     rx="45.04174"
+     ry="21.561302"
+     class="attribute"
+     id="ellipse4" />
+  <text
+     x="371.24939"
+     y="229.62184"
+     class="text"
+     id="text5"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan68">phone</tspan></text>
+  <line
+     x1="369.24686"
+     y1="251.88281"
+     x2="338.5181"
+     y2="299.63736"
+     class="line"
+     id="line5"
+     style="stroke-width:0.996589;stroke-dasharray:none" />
+  <ellipse
+     cx="431.42227"
+     cy="185.44531"
+     rx="45.016399"
+     ry="23.378546"
+     class="attribute"
+     id="ellipse5" />
+  <text
+     x="431.83173"
+     y="186.67372"
+     class="text"
+     id="text6"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan69">email</tspan></text>
+  <line
+     x1="438.60617"
+     y1="208.70534"
+     x2="396.50034"
+     y2="302.01004"
+     class="line"
+     id="line6"
+     style="stroke-width:1.09688;stroke-dasharray:none" />
+  <ellipse
+     cx="162.16486"
+     cy="317.31158"
+     rx="60"
+     ry="25"
+     class="attribute"
+     id="ellipse6" />
+  <text
+     x="165.06021"
+     y="317.60114"
+     class="text"
+     id="text7"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan70">credit_score</tspan></text>
+  <line
+     x1="221.54672"
+     y1="313.97528"
+     x2="292.44998"
+     y2="339.26749"
+     class="line"
+     id="line7" />
+  <ellipse
+     cx="171.29626"
+     cy="382.96857"
+     rx="70"
+     ry="25"
+     class="attribute"
+     id="ellipse7" />
+  <text
+     x="174.77068"
+     y="384.9953"
+     class="text"
+     id="text8"
+     style="font-size:12px"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan71">registration_date</tspan></text>
+  <line
+     x1="241.13997"
+     y1="384.76517"
+     x2="292.56641"
+     y2="357.4541"
+     class="line"
+     id="line8"
+     style="stroke-width:1.012;stroke-dasharray:none" />
+  <ellipse
+     cx="181.70432"
+     cy="443.28882"
+     rx="55"
+     ry="25"
+     class="attribute"
+     id="ellipse8" />
+  <text
+     x="182.11378"
+     y="443.69827"
+     class="text"
+     id="text9"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan72">last_login</tspan></text>
+  <line
+     x1="231.44498"
+     y1="432.03967"
+     x2="299.34943"
+     y2="359.7323"
+     class="line"
+     id="line9"
+     style="stroke-width:0.908416;stroke-dasharray:none" />
+  <ellipse
+     cx="488.98087"
+     cy="253.99217"
+     rx="45"
+     ry="25"
+     class="attribute"
+     id="ellipse9" />
+  <text
+     x="491.0076"
+     y="255.72942"
+     class="text"
+     id="text10"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan75">status</tspan></text>
+  <!-- 商品实体 -->
+  <rect
+     x="792.43225"
+     y="300.1405"
+     width="120"
+     height="60"
+     rx="0"
+     ry="0"
+     class="entity"
+     id="rect10" />
+  <text
+     x="852.43225"
+     y="330.1405"
+     class="text"
+     id="text11"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan107">Product</tspan></text>
+  <!-- 商品属性 -->
+  <ellipse
+     cx="663.85779"
+     cy="259.67297"
+     rx="60"
+     ry="25"
+     class="attribute"
+     id="ellipse11" />
+  <text
+     x="660.81769"
+     y="258.94916"
+     class="text underline"
+     id="text12"
+     style="text-decoration:underline;text-decoration-line:underline"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan85">product_id</tspan></text>
+  <line
+     x1="722.88483"
+     y1="265.53308"
+     x2="792.51447"
+     y2="300.30487"
+     class="line"
+     id="line12"
+     style="stroke-width:0.933;stroke-dasharray:none" />
+  <ellipse
+     cx="720.40552"
+     cy="203.45908"
+     rx="50"
+     ry="25"
+     class="attribute"
+     id="ellipse12" />
+  <text
+     x="718.37878"
+     y="205.77534"
+     class="text"
+     id="text13"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan86">seller_id</tspan></text>
+  <line
+     x1="746.2514"
+     y1="224.58949"
+     x2="802.45496"
+     y2="300.15369"
+     class="line"
+     id="line13" />
+  <ellipse
+     cx="797.72345"
+     cy="170.95943"
+     rx="40"
+     ry="25"
+     class="attribute"
+     id="ellipse13" />
+  <text
+     x="799.15656"
+     y="171.77837"
+     class="text"
+     id="text14"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan87">title</tspan></text>
+  <line
+     x1="802.43225"
+     y1="195.1405"
+     x2="822.43225"
+     y2="300.1405"
+     class="line"
+     id="line14" />
+  <ellipse
+     cx="888.64471"
+     cy="193.92804"
+     rx="56.265896"
+     ry="21.265896"
+     class="attribute"
+     id="ellipse14" />
+  <text
+     x="888.33765"
+     y="194.23514"
+     class="text"
+     id="text15"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan88">description</tspan></text>
+  <line
+     x1="870.02435"
+     y1="213.81218"
+     x2="852.38336"
+     y2="300.15399"
+     class="line"
+     id="line15" />
+  <ellipse
+     cx="962.43225"
+     cy="230.1405"
+     rx="40"
+     ry="25"
+     class="attribute"
+     id="ellipse15" />
+  <text
+     x="962.43225"
+     y="230.1405"
+     class="text"
+     id="text16"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan89">price</tspan></text>
+  <line
+     x1="928.77118"
+     y1="243.19139"
+     x2="882.4082"
+     y2="300.16058"
+     class="line"
+     id="line16" />
+  <ellipse
+     cx="1022.4323"
+     cy="280.1405"
+     rx="65"
+     ry="25"
+     class="attribute"
+     id="ellipse16" />
+  <text
+     x="1022.4323"
+     y="280.1405"
+     class="text"
+     id="text17"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan90">original_price</tspan></text>
+  <line
+     x1="966.11157"
+     y1="291.93146"
+     x2="912.61102"
+     y2="318.34958"
+     class="line"
+     id="line17" />
+  <ellipse
+     cx="654.47961"
+     cy="383.03857"
+     rx="44.666233"
+     ry="18.965597"
+     class="attribute"
+     id="ellipse17" />
+  <text
+     x="654.95966"
+     y="384.84811"
+     class="text"
+     id="text18"
+     style="font-size:12px"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan93">condition</tspan></text>
+  <line
+     x1="696.31543"
+     y1="375.35934"
+     x2="791.52234"
+     y2="341.3472"
+     class="line"
+     id="line18" />
+  <ellipse
+     cx="688.66827"
+     cy="423.77075"
+     rx="45.067272"
+     ry="18.697519"
+     class="attribute"
+     id="ellipse18" />
+  <text
+     x="690.11597"
+     y="425.50797"
+     class="text"
+     id="text19"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan94">location</tspan></text>
+  <line
+     x1="727.43225"
+     y1="415.1405"
+     x2="792.43225"
+     y2="355.1405"
+     class="line"
+     id="line19" />
+  <ellipse
+     cx="1037.0479"
+     cy="457.5495"
+     rx="43.576256"
+     ry="16.033033"
+     class="attribute"
+     id="ellipse19" />
+  <text
+     x="1038.9928"
+     y="459.08499"
+     class="text"
+     id="text20"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan120">post_date</tspan></text>
+  <ellipse
+     cx="1032.512"
+     cy="410.06107"
+     rx="40.090946"
+     ry="16.694456"
+     class="attribute"
+     id="ellipse20" />
+  <text
+     x="1032.4423"
+     y="411.98346"
+     class="text"
+     id="text21"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan121">status</tspan></text>
+  <ellipse
+     cx="1032.9237"
+     cy="371.89438"
+     rx="55.092278"
+     ry="16.595917"
+     class="attribute"
+     id="ellipse21" />
+  <text
+     x="1035.7899"
+     y="372.40622"
+     class="text"
+     id="text22"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan92">view_count</tspan></text>
+  <ellipse
+     cx="1027.819"
+     cy="327.55637"
+     rx="55.076492"
+     ry="17.910889"
+     class="attribute"
+     id="ellipse22" />
+  <text
+     x="1031.7089"
+     y="328.37527"
+     class="text"
+     id="text23"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan91">fav_count</tspan></text>
+  <line
+     x1="972.60028"
+     y1="326.23029"
+     x2="912.29608"
+     y2="334.45108"
+     class="line"
+     id="line23" />
+  <!-- 订单实体 -->
+  <rect
+     x="792.43225"
+     y="600.1405"
+     width="120"
+     height="60"
+     class="entity"
+     id="rect23" />
+  <text
+     x="852.43225"
+     y="630.1405"
+     class="text"
+     id="text24"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan124">Order</tspan></text>
+  <!-- 订单属性 -->
+  <ellipse
+     cx="663.8335"
+     cy="664.17596"
+     rx="48.956772"
+     ry="20.389893"
+     class="attribute"
+     id="ellipse24" />
+  <text
+     x="665.06189"
+     y="662.74286"
+     class="text underline"
+     id="text25"
+     style="text-decoration:underline;text-decoration-line:underline"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan106">order_id</tspan></text>
+  <ellipse
+     cx="668.54236"
+     cy="708.85297"
+     rx="51.604862"
+     ry="18.329157"
+     class="attribute"
+     id="ellipse25"
+     style="stroke-width:1.1;stroke-dasharray:none" />
+  <text
+     x="668.33759"
+     y="709.05768"
+     class="text"
+     id="text26"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan105">product_id</tspan></text>
+  <ellipse
+     cx="671.20386"
+     cy="753.12054"
+     rx="50.031235"
+     ry="21.960262"
+     class="attribute"
+     id="ellipse26" />
+  <text
+     x="672.84174"
+     y="754.1441"
+     class="text"
+     id="text27"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan104">buyer_id</tspan></text>
+  <ellipse
+     cx="767.1593"
+     cy="773.84381"
+     rx="45.741989"
+     ry="22.994036"
+     class="attribute"
+     id="ellipse27" />
+  <text
+     x="766.54504"
+     y="775.07227"
+     class="text"
+     id="text28"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan103">seller_id</tspan></text>
+  <ellipse
+     cx="872.64148"
+     cy="761.4007"
+     rx="55.026962"
+     ry="22.365452"
+     class="attribute"
+     id="ellipse28" />
+  <text
+     x="875.09833"
+     y="759.55811"
+     class="text"
+     id="text29"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan102">order_date</tspan></text>
+  <ellipse
+     cx="967.82349"
+     cy="781.57361"
+     rx="39.420555"
+     ry="21.963778"
+     class="attribute"
+     id="ellipse29" />
+  <text
+     x="964.34308"
+     y="781.77838"
+     class="text"
+     id="text30"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan101">price</tspan></text>
+  <ellipse
+     cx="1017.728"
+     cy="728.02948"
+     rx="45"
+     ry="25"
+     class="attribute"
+     id="ellipse30" />
+  <text
+     x="1014.4523"
+     y="729.66736"
+     class="text"
+     id="text31"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan100">status</tspan></text>
+  <ellipse
+     cx="1021.8044"
+     cy="667.72925"
+     rx="70"
+     ry="25"
+     class="attribute"
+     id="ellipse31" />
+  <text
+     x="1023.9922"
+     y="666.26093"
+     class="text"
+     id="text32"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan99">payment_method</tspan></text>
+  <line
+     x1="965.78955"
+     y1="652.31665"
+     x2="911.57007"
+     y2="625.31342"
+     class="line"
+     id="line32"
+     style="stroke-width:1.065;stroke-dasharray:none" />
+  <ellipse
+     cx="1008.5424"
+     cy="598.89392"
+     rx="73.060272"
+     ry="24.989296"
+     class="attribute"
+     id="ellipse32" />
+  <text
+     x="1010.3849"
+     y="599.71283"
+     class="text"
+     id="text33"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan98">shipping_address</tspan></text>
+  <ellipse
+     cx="947.72137"
+     cy="539.05988"
+     rx="67.851921"
+     ry="23.43099"
+     class="attribute"
+     id="ellipse33" />
+  <text
+     x="949.31378"
+     y="540.65228"
+     class="text"
+     id="text34"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan97">tracking_number</tspan></text>
+  <!-- 消息实体 -->
+  <rect
+     x="292.43228"
+     y="600.1405"
+     width="120"
+     height="60"
+     class="entity"
+     id="rect34" />
+  <text
+     x="352.43228"
+     y="630.1405"
+     class="text"
+     id="text35"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan123">Message</tspan></text>
+  <!-- 消息属性 -->
+  <ellipse
+     cx="182.43225"
+     cy="550.1405"
+     rx="60"
+     ry="25"
+     class="attribute"
+     id="ellipse35" />
+  <text
+     x="182.43225"
+     y="550.1405"
+     class="text underline"
+     id="text36"
+     style="text-decoration:underline;text-decoration-line:underline"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan108">message_id</tspan></text>
+  <line
+     x1="225.89951"
+     y1="567.36658"
+     x2="292.44547"
+     y2="600.1665"
+     class="line"
+     id="line36" />
+  <ellipse
+     cx="152.43225"
+     cy="601.87769"
+     rx="50.064018"
+     ry="18.983799"
+     class="attribute"
+     id="ellipse36" />
+  <text
+     x="152.43225"
+     y="601.00909"
+     class="text"
+     id="text37"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan109">sender_id</tspan></text>
+  <line
+     x1="198.58574"
+     y1="608.75763"
+     x2="292.42075"
+     y2="620.09027"
+     class="line"
+     id="line37" />
+  <ellipse
+     cx="152.56595"
+     cy="651.29865"
+     rx="49.965317"
+     ry="19.308331"
+     class="attribute"
+     id="ellipse37" />
+  <text
+     x="152.56595"
+     y="653.03583"
+     class="text"
+     id="text38"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan110">receiver_id</tspan></text>
+  <line
+     x1="198.25812"
+     y1="643.03314"
+     x2="292.44427"
+     y2="630.08063"
+     class="line"
+     id="line38" />
+  <ellipse
+     cx="159.97122"
+     cy="702.74634"
+     rx="52.635727"
+     ry="16.989813"
+     class="attribute"
+     id="ellipse38" />
+  <text
+     x="159.68594"
+     y="702.4071"
+     class="text"
+     id="text39"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan111">product_id</tspan></text>
+  <line
+     x1="192.61075"
+     y1="689.71582"
+     x2="292.40961"
+     y2="650.19769"
+     class="line"
+     id="line39" />
+  <ellipse
+     cx="206.93111"
+     cy="743.19171"
+     rx="45.067272"
+     ry="18.697517"
+     class="attribute"
+     id="ellipse39" />
+  <text
+     x="207.22064"
+     y="743.4812"
+     class="text"
+     id="text40"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan112">content</tspan></text>
+  <line
+     x1="237.43225"
+     y1="730.1405"
+     x2="302.43228"
+     y2="660.1405"
+     class="line"
+     id="line40" />
+  <ellipse
+     cx="282.43228"
+     cy="780.57477"
+     rx="55.055935"
+     ry="19.699551"
+     class="attribute"
+     id="ellipse40" />
+  <text
+     x="282.43228"
+     y="780.1405"
+     class="text"
+     id="text41"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan113">send_time</tspan></text>
+  <line
+     x1="289.00455"
+     y1="760.91516"
+     x2="322.38559"
+     y2="660.15649"
+     class="line"
+     id="line41" />
+  <ellipse
+     cx="370.40555"
+     cy="748.40332"
+     rx="45.067272"
+     ry="18.697519"
+     class="attribute"
+     id="ellipse41" />
+  <text
+     x="371.56369"
+     y="748.98236"
+     class="text"
+     id="text42"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan114">is_read</tspan></text>
+  <line
+     x1="357.43228"
+     y1="730.1405"
+     x2="342.43228"
+     y2="660.1405"
+     class="line"
+     id="line42" />
+  <!-- 收藏实体 -->
+  <rect
+     x="542.43225"
+     y="150.1405"
+     width="120"
+     height="60"
+     class="entity"
+     id="rect42" />
+  <text
+     x="601.56366"
+     y="183.32538"
+     class="text"
+     id="text43"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan80">Favorite</tspan></text>
+  <!-- 收藏属性 -->
+  <ellipse
+     cx="451.71951"
+     cy="120.69743"
+     rx="60"
+     ry="25"
+     class="attribute"
+     id="ellipse43" />
+  <text
+     x="452.58813"
+     y="120.11836"
+     class="text underline"
+     id="text44"
+     style="text-decoration:underline;text-decoration-line:underline"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan81">favorite_id</tspan></text>
+  <line
+     x1="508.07339"
+     y1="128.42987"
+     x2="542.50391"
+     y2="150.24762"
+     class="line"
+     id="line44" />
+  <ellipse
+     cx="509.71494"
+     cy="77.534698"
+     rx="50.051117"
+     ry="20.129036"
+     class="attribute"
+     id="ellipse44" />
+  <text
+     x="508.84631"
+     y="76.087021"
+     class="text"
+     id="text45"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan82">user_id</tspan></text>
+  <line
+     x1="523.50293"
+     y1="96.574989"
+     x2="572.25232"
+     y2="150.01999"
+     class="line"
+     id="line45"
+     style="stroke-width:1.089;stroke-dasharray:none" />
+  <ellipse
+     cx="619.53693"
+     cy="70.296341"
+     rx="55.08073"
+     ry="17.552843"
+     class="attribute"
+     id="ellipse45" />
+  <text
+     x="620.11597"
+     y="71.454475"
+     class="text"
+     id="text46"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan83">product_id</tspan></text>
+  <line
+     x1="615.51837"
+     y1="88.966209"
+     x2="592.53101"
+     y2="150.10088"
+     class="line"
+     id="line46"
+     style="stroke-width:0.95;stroke-dasharray:none" />
+  <ellipse
+     cx="692.43225"
+     cy="105.78642"
+     rx="45.059109"
+     ry="19.413191"
+     class="attribute"
+     id="ellipse46" />
+  <text
+     x="694.16943"
+     y="105.06258"
+     class="text"
+     id="text47"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan84">add_date</tspan></text>
+  <line
+     x1="659.27942"
+     y1="119.15741"
+     x2="622.40021"
+     y2="150.17708"
+     class="line"
+     id="line47" />
+  <!-- 关系 -->
+  <!-- 用户-商品(销售)关系 -->
+  <polygon
+     points="420,330 450,300 480,330 450,360 "
+     class="relationship"
+     id="polygon47"
+     transform="translate(75.060209,32.568333)" />
+  <text
+     x="525.34973"
+     y="364.88461"
+     class="text"
+     id="text48"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan76">post</tspan></text>
+  <!-- 收藏关系(三元关系) -->
+  <polygon
+     points="450,300 480,270 510,300 480,330 "
+     class="relationship"
+     id="polygon50"
+     transform="matrix(1.224213,0,0,0.99752218,-21.994051,0.88384933)" />
+  <text
+     x="566.0625"
+     y="301.58817"
+     class="text"
+     id="text50"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan79">collect</tspan></text>
+  <line
+     x1="565.77295"
+     y1="271.00909"
+     x2="565.77295"
+     y2="210.1405"
+     class="double-line"
+     id="line50"
+     style="stroke-width:1.10793;stroke-dasharray:none" />
+  <!-- 商品-订单关系 -->
+  <polygon
+     points="730,450 760,480 730,510 700,480 "
+     class="relationship"
+     id="polygon52"
+     transform="matrix(1.1955689,0,0,0.9978249,-56.268481,1.1845553)" />
+  <text
+     x="816.19098"
+     y="481.3689"
+     class="text"
+     id="text52"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono'"
+       id="tspan96">contain</tspan></text>
+  <line
+     x1="816.93109"
+     y1="362.16724"
+     x2="816.93109"
+     y2="450.1405"
+     class="line"
+     id="line53" />
+  <line
+     x1="816.64154"
+     y1="510.1405"
+     x2="816.64154"
+     y2="601.00909"
+     class="double-line"
+     id="line54"
+     style="stroke-width:1.30626;stroke-dasharray:none" />
+  <!-- 用户-订单(购买)关系 -->
+  <polygon
+     points="430,510 400,480 430,450 460,480 "
+     class="relationship"
+     id="polygon55"
+     transform="translate(149.34764,-17.875873)" />
+  <text
+     x="580.97223"
+     y="460.83746"
+     class="text"
+     id="text48-8"
+     style="font-size:14px;font-family:Arial, sans-serif;dominant-baseline:middle;text-anchor:middle"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan76-2">buy</tspan></text>
+  <!-- 用户-订单(销售)关系 -->
+  <polygon
+     points="350,450 380,420 410,450 380,480 "
+     class="relationship"
+     id="polygon57"
+     transform="translate(196.84536,104.14415)" />
+  <text
+     x="577.22083"
+     y="554.69781"
+     class="text"
+     id="text48-8-4"
+     style="font-size:14px;font-family:Arial, sans-serif;dominant-baseline:middle;text-anchor:middle"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan76-2-5">sell</tspan></text>
+  <!-- 用户-消息(发送)关系 -->
+  <polygon
+     points="290,480 260,450 290,420 320,450 "
+     class="relationship"
+     id="polygon59"
+     transform="translate(81.429961,-1.5966995)" />
+  <text
+     x="372.00906"
+     y="450.1405"
+     class="text"
+     id="text59"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan74">send</tspan></text>
+  <path
+     d="m 371.40827,477.815 q -14.57953,61.20249 -29.15904,122.40499"
+     class="double-line"
+     id="path60"
+     style="stroke-width:1.128;stroke-dasharray:none" />
+  <!-- 用户-消息(接收)关系 -->
+  <polygon
+     points="200,480 170,450 200,420 230,450 "
+     class="relationship"
+     id="polygon61"
+     transform="matrix(1.2277264,0,0,1.1393739,44.430204,-50.498598)" />
+  <text
+     x="204.09464"
+     y="466.37854"
+     class="text"
+     id="text61"
+     style="font-size:13.3333px;white-space:pre;inline-size:84.9967;display:inline"
+     transform="translate(86.290312,-3.1351997)"
+     xml:space="preserve"><tspan
+       x="204.09464"
+       y="466.37854"
+       id="tspan2"><tspan
+         style="font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+         id="tspan1">receive</tspan></tspan></text>
+  <path
+     d="m 290.47789,496.121 q 10.93072,52.00404 21.86142,104.00808"
+     class="double-line"
+     id="path62"
+     style="stroke-width:1.323;stroke-dasharray:none" />
+  <!-- 消息-商品关系 -->
+  <polygon
+     points="430,630 400,600 430,570 460,600 "
+     class="relationship"
+     id="polygon63"
+     transform="translate(91.20387,30.440779)" />
+  <text
+     x="521.61334"
+     y="630.85028"
+     class="text"
+     id="text63"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Maple Mono NF CN';-inkscape-font-specification:'Maple Mono NF CN'"
+       id="tspan115">about</tspan></text>
+  <line
+     x1="412.43228"
+     y1="630.1405"
+     x2="492.43228"
+     y2="630.1405"
+     class="line"
+     id="line63" />
+  <polygon
+     points="735,365 730,355 725,365 "
+     fill="#000000"
+     id="polygon64"
+     transform="matrix(1,0,0,0.56569875,87.510178,160.10814)" />
+  <path
+     style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.973184px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Triangle)"
+     d="m 290.32049,428.27197 13.97382,-61.3724"
+     id="path73"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker75)"
+     d="M 371.68613,418.61185 330.12562,365.99583"
+     id="path74"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <ellipse
+     cx="489.08499"
+     cy="253.8987"
+     rx="41.006001"
+     ry="21.29554"
+     class="attribute"
+     id="ellipse9-0"
+     style="fill:none;stroke:#000000;stroke-width:0.881032" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01777px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 408.02897,300.09078 47.05066,-29.63815"
+     id="path76"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.901326px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker75)"
+     d="m 418.74282,354.75459 76.83474,7.55172"
+     id="path77"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 555.12562,362.5154 236.6697,-28.25296"
+     id="path78"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.970198px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 412.68247,319.94635 528.84033,299.89567"
+     id="path79"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.01872px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 602.69107,300.22761 791.801,316.84145"
+     id="path84"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <ellipse
+     cx="1031.954"
+     cy="409.5603"
+     rx="31.918976"
+     ry="13.589332"
+     class="attribute"
+     id="ellipse20-9"
+     style="fill:none;stroke:#000000;stroke-width:1.059;stroke-dasharray:none" />
+  <ellipse
+     cx="655.60394"
+     cy="383.73691"
+     rx="37.231113"
+     ry="13.267682"
+     class="attribute"
+     id="ellipse17-4"
+     style="fill:none;stroke:#000000;stroke-width:1.099;stroke-dasharray:none" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 912.9721,344.39664 67.75099,21.42553"
+     id="path94"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 912.68256,356.26754 81.64864,47.77314"
+     id="path95"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 903.707,360.90008 91.78233,91.20327"
+     id="path96"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 871.56871,598.60764 29.53248,-43.14059"
+     id="path97"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 912.58695,615.15416 25.79617,-7.7798"
+     id="path98"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <ellipse
+     cx="1016.6202"
+     cy="728.32562"
+     rx="38.142578"
+     ry="18.552042"
+     class="attribute"
+     id="ellipse30-8"
+     style="fill:none;stroke:#000000;stroke-width:1.193;stroke-dasharray:none" />
+  <path
+     style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 912.17748,661.83296 66.7425,52.41128"
+     id="path100"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 868.77439,661.42349 -7.7798,79.02639"
+     id="path102"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 894.1611,660.19511 60.19109,99.909"
+     id="path103"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.02376px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 811.44244,661.83511 -36.428,88.43974"
+     id="path104"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.07589px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 796.68089,660.64547 -90.84485,75.66888"
+     id="path105"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="display:inline;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.277;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+     d="m 792.41337,654.36872 -78.62463,45.63821"
+     id="path106"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.946058px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 551.31215,629.82183 240.3926,-11.04885"
+     id="path115"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 792.20478,638.90302 711.95,661.01403"
+     id="path116"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.958086px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker75)"
+     d="m 398.88561,364.80381 150.93858,97.62868"
+     id="path117"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 608.76529,462.01494 799.16565,600.00402"
+     id="path118"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.997426px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker75)"
+     d="M 375.72398,365.69272 549.00093,554.94747"
+     id="path119"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 605.89905,553.73469 187.12466,54.04913"
+     id="path120"
+     inkscape:connector-type="polyline"
+     inkscape:connector-curvature="0" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:0.331238px;font-family:'Maple Mono';-inkscape-font-specification:'Maple Mono';text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:none;stroke:#000000;stroke-width:1.277;stroke-dasharray:none;stroke-opacity:0.933555"
+     x="353.5921"
+     y="628.42963"
+     id="text122"><tspan
+       sodipodi:role="line"
+       id="tspan122"
+       x="353.5921"
+       y="628.42963" /></text>
+</svg>
