@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %} 商品列表 - 咸鱼交易平台 {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">商品列表</h1>
+    
+    <!-- 搜索和筛选区域 -->
+    <div class="filter-section">
+        <form method="GET" action="{{ url_for('product_list') }}" class="search-form">
+            <input type="text" name="search" placeholder="搜索商品..." value="{{ request.args.get('search', '') }}">
+            <select name="condition">
+                <option value="">全部状态</option>
+                <option value="new" {% if request.args.get('condition') == 'new' %}selected{% endif %}>全新</option>
+                <option value="like new" {% if request.args.get('condition') == 'like new' %}selected{% endif %}>几乎全新</option>
+                <option value="good" {% if request.args.get('condition') == 'good' %}selected{% endif %}>良好</option>
+                <option value="fair" {% if request.args.get('condition') == 'fair' %}selected{% endif %}>一般</option>
+                <option value="poor" {% if request.args.get('condition') == 'poor' %}selected{% endif %}>较差</option>
+            </select>
+            <select name="status">
+                <option value="available" {% if request.args.get('status') == 'available' %}selected{% endif %}>可售商品</option>
+                <option value="reserved" {% if request.args.get('status') == 'reserved' %}selected{% endif %}>已预订</option>
+                <option value="all" {% if request.args.get('status') == 'all' %}selected{% endif %}>全部商品</option>
+            </select>
+            <select name="sort">
+                <option value="newest" {% if request.args.get('sort') == 'newest' %}selected{% endif %}>最新发布</option>
+                <option value="price_low" {% if request.args.get('sort') == 'price_low' %}selected{% endif %}>价格从低到高</option>
+                <option value="price_high" {% if request.args.get('sort') == 'price_high' %}selected{% endif %}>价格从高到低</option>
+                <option value="popular" {% if request.args.get('sort') == 'popular' %}selected{% endif %}>最受欢迎</option>
+            </select>
+            <button type="submit" class="btn btn-primary">筛选</button>
+        </form>
+    </div>
+    
+    <!-- 商品列表 -->
+    <div class="product-grid">
+        {% for product in products %}
+        <div class="product-card {% if product.status != 'available' %}product-unavailable{% endif %}">
+            <div class="product-image">
+                <img src="{{ url_for('static', filename='uploads/' + product.image) }}" alt="{{ product.title }}">
+                {% if product.status == 'reserved' %}
+                <div class="product-tag reserved">已预订</div>
+                {% elif product.status == 'sold' %}
+                <div class="product-tag sold">已售出</div>
+                {% elif product.status == 'removed' %}
+                <div class="product-tag removed">已下架</div>
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <h2 class="product-title"><a href="{{ url_for('product_detail', product_id=product.id) }}">{{ product.title }}</a></h2>
+                <div class="product-price">
+                    <span class="current-price">￥{{ product.price }}</span>
+                    {% if product.original_price %}
+                    <span class="original-price">￥{{ product.original_price }}</span>
+                    <span class="discount">{{ ((1 - product.price / product.original_price) * 100) | round }}% OFF</span>
+                    {% endif %}
+                </div>
+                <div class="product-meta">
+                    <span class="condition">{{ product.condition_display }}</span>
+                    <span class="location"><i class="location-icon"></i>{{ product.location }}</span>
+                </div>
+                <div class="product-stats">
+                    <span class="views"><i class="view-icon"></i>{{ product.view_count }}</span>
+                    <span class="favorites"><i class="fav-icon"></i>{{ product.fav_count }}</span>
+                    <span class="post-date">{{ product.post_date.strftime('%Y-%m-%d') }}</span>
+                </div>
+                <div class="product-actions">
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}" class="btn btn-primary">查看详情</a>
+                    <button class="btn btn-outline favorite-btn" data-product-id="{{ product.id }}">
+                        <i class="heart-icon"></i>收藏
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- 分页 -->
+    {% if pages > 1 %}
+    <div class="pagination">
+        {% if page > 1 %}
+        <a href="{{ url_for('product_list', page=page-1, **request.args) }}" class="page-prev">上一页</a>
+        {% endif %}
+        
+        {% for p in range(1, pages + 1) %}
+        <a href="{{ url_for('product_list', page=p, **request.args) }}" class="page-num {% if p == page %}active{% endif %}">{{ p }}</a>
+        {% endfor %}
+        
+        {% if page < pages %}
+        <a href="{{ url_for('product_list', page=page+1, **request.args) }}" class="page-next">下一页</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // 收藏按钮功能
+    document.querySelectorAll('.favorite-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.dataset.productId;
+            fetch(`/api/favorite/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    this.classList.toggle('favorited');
+                    // 更新收藏计数
+                    const favCountEl = this.closest('.product-card').querySelector('.favorites');
+                    const currentCount = parseInt(favCountEl.textContent);
+                    favCountEl.textContent = this.classList.contains('favorited') ? currentCount + 1 : currentCount - 1;
+                } else {
+                    alert('请先登录后再收藏商品');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
