@@ -4,7 +4,7 @@ import hashlib
 from datetime import datetime
 import faker
 
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, flash, render_template, request, redirect, url_for, session, jsonify
 
 db_path = 'xianyu.db'
 
@@ -68,6 +68,7 @@ def delete_favorite(user_id, product_id):
     raise NotImplementedError
 
 app = Flask(__name__)
+app.secret_key = 'a9d8s7f6g5h4j3k2l1!@#secret_key_for_session$%^&*'
 
 users = []
 messages = []
@@ -75,12 +76,69 @@ orders = []
 favorites = []
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-@app.route('/home')
 def home():
-    return render_template('base.html')
+    return render_template('home.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        
+        # 在这里验证账号密码（例如查数据库）
+        if username == 'test' and password == '123':
+            session['username'] = username  # 设置登录状态
+            session['user_id'] = 1  # 假设用户ID为1
+            flash('登录成功！', 'success')
+            return redirect(url_for('home'))  # 登录成功后跳转
+        else:
+            flash('用户名或密码错误', 'danger')
+            return redirect(url_for('login'))
+    
+    return render_template('login.html')  # GET 请求返回登录页面
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    flash('已成功登出', 'info')
+    return redirect(url_for('home'))
+
+from datetime import datetime
+import hashlib
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        raw_password = request.form['password']
+        phone = request.form['phone']
+        email = request.form['email']
+
+        # 密码加密
+        password_hash = hashlib.sha256(raw_password.encode()).hexdigest()
+
+        # 注册时间、上次登录时间
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        credit_score = 100  # 默认信用分
+        status = 'active'   # 默认状态
+
+        insert_user(
+            username=username,
+            password=password_hash,
+            phone=phone,
+            email=email,
+            credit_score=credit_score,
+            registration_date=now,
+            last_login=now,
+            status=status
+        )
+
+        flash('注册成功！请登录', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('register.html')
+
+
 
 @app.route('/messages')
 def message_system():

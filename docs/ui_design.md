@@ -22,6 +22,55 @@
     app.py
 ```
 
+### Base & Home
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} 咸鱼交易平台 {% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">首页</a></li>
+                <li><a href="{{ url_for('product_list') }}">商品列表</a></li>
+                <li><a href="{{ url_for('favorites_page') }}">我的收藏</a></li>
+                <li><a href="{{ url_for('order_management') }}">订单管理</a></li>
+                <li><a href="{{ url_for('login') }}">登录</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- 子页面的内容会放在这里 -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 咸鱼交易平台</p>
+    </footer>
+</body>
+</html>
+```
+
+```python
+{% extends 'base.html' %}
+
+{% block title %} 首页 - 咸鱼交易平台 {% endblock %}
+
+{% block content %}
+<h1>欢迎来到咸鱼交易平台</h1>
+<p>在这里，你可以发布和购买二手商品。</p>
+{% endblock %}
+```
+
 ### 1. 商品交易（发布商品、浏览、购买）
 
 #### `product_list.html`：商品浏览页面
