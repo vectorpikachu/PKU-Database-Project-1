@@ -1,7 +1,7 @@
 import sqlite3
 import random
 import hashlib
-from datetime import datetime
+from datetime import datetime, timedelta
 import faker
 
 from flask import Flask, flash, render_template, request, redirect, url_for, session, jsonify
@@ -201,7 +201,38 @@ def favorites():
         return redirect(url_for('login'))
     user_id = session['user_id']
     # 这里应该从数据库获取用户的收藏列表，简化示例
-    favorites = []  # 实际应从数据库查询
+    favorites = [
+        {
+            "favorite_id": 1,
+            "user_id": 1,
+            "product_id": 1,
+            "add_date": datetime(2024, 11, 3, 14, 30)
+        },
+        {
+            "favorite_id": 2,
+            "user_id": 2,
+            "product_id": 3,
+            "add_date": datetime(2024, 11, 5, 9, 15)
+        },
+        {
+            "favorite_id": 3,
+            "user_id": 1,
+            "product_id": 2,
+            "add_date": datetime(2024, 11, 6, 18, 50)
+        },
+        {
+            "favorite_id": 4,
+            "user_id": 3,
+            "product_id": 4,
+            "add_date": datetime(2024, 11, 7, 11, 10)
+        },
+        {
+            "favorite_id": 5,
+            "user_id": 4,
+            "product_id": 5,
+            "add_date": datetime(2024, 11, 8, 20, 5)
+        }
+    ]  # 实际应从数据库查询
     return render_template('favorites.html', favorites=favorites)
 
 @app.route('/add_favorite', methods=['POST'])
@@ -232,6 +263,82 @@ def remove_favorite():
         return jsonify({'status': 'success'})
     else:
         return jsonify({'status': 'fail', 'message': '移除收藏失败'})
+
+# 模拟数据
+def generate_products():
+    conditions = ['new', 'like new', 'good', 'fair', 'poor']
+    statuses = ['available', 'reserved', 'sold', 'removed']
+    locations = ['北京', '上海', '广州', '深圳', '杭州']
+
+    products = []
+    for i in range(1, 11):
+        original_price = round(random.uniform(100, 1000), 2)
+        discount = random.uniform(0.5, 0.9)
+        price = round(original_price * discount, 2)
+        condition = random.choice(conditions)
+        status = random.choice(statuses)
+        product = {
+            'id': i,
+            'seller_id': random.randint(1, 5),
+            'title': f'商品{i}',
+            'description': f'这是商品{i}的描述信息',
+            'price': price,
+            'original_price': original_price,
+            'condition': condition,
+            'condition_display': {
+                'new': '全新',
+                'like new': '几乎全新',
+                'good': '良好',
+                'fair': '一般',
+                'poor': '较差'
+            }[condition],
+            'location': random.choice(locations),
+            'post_date': datetime.now() - timedelta(days=random.randint(1, 30)),
+            'status': status,
+            'view_count': random.randint(10, 200),
+            'fav_count': random.randint(0, 50)
+        }
+        products.append(product)
+    return products
+
+@app.route('/products')
+def product_list():
+    search = request.args.get('search', '')
+    condition = request.args.get('condition', '')
+    status = request.args.get('status', 'available')
+    sort = request.args.get('sort', 'newest')
+    page = int(request.args.get('page', 1))
+    per_page = 5
+
+    # 获取全部数据并做简单过滤
+    all_products = generate_products()
+
+    # 搜索过滤
+    if search:
+        all_products = [p for p in all_products if search in p['title']]
+
+    if condition:
+        all_products = [p for p in all_products if p['condition'] == condition]
+
+    if status != 'all':
+        all_products = [p for p in all_products if p['status'] == status]
+
+    # 排序
+    if sort == 'newest':
+        all_products.sort(key=lambda x: x['post_date'], reverse=True)
+    elif sort == 'price_low':
+        all_products.sort(key=lambda x: x['price'])
+    elif sort == 'price_high':
+        all_products.sort(key=lambda x: x['price'], reverse=True)
+    elif sort == 'popular':
+        all_products.sort(key=lambda x: x['view_count'], reverse=True)
+
+    # 分页
+    total = len(all_products)
+    pages = (total + per_page - 1) // per_page
+    products = all_products[(page - 1) * per_page : page * per_page]
+
+    return render_template('product_list.html', products=products, page=page, pages=pages)
 
 if __name__ == '__main__':
     app.run(debug=True)

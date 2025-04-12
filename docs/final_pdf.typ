@@ -555,28 +555,391 @@ print_table_data('Favorite')
 --------------------------------------------------
 favorite_id | user_id | product_id | add_date  
 --------------------------------------------------
-1           | 2       | 7          | 2025-02-15
-2           | 2       | 10         | 2025-01-31
-3           | 1       | 12         | 2025-02-28
-4           | 7       | 16         | 2025-03-13
-5           | 8       | 17         | 2025-03-28
-6           | 10      | 10         | 2025-03-23
-7           | 4       | 18         | 2025-01-08
-8           | 4       | 4          | 2025-01-11
-9           | 2       | 19         | 2025-03-19
-10          | 9       | 18         | 2025-01-16
-11          | 6       | 6          | 2025-03-03
-12          | 8       | 6          | 2025-02-24
-13          | 10      | 17         | 2025-04-06
-14          | 6       | 18         | 2025-03-07
-15          | 3       | 9          | 2025-01-29
-16          | 4       | 13         | 2025-01-04
-17          | 4       | 3          | 2025-02-07
-18          | 10      | 19         | 2025-01-17
-19          | 7       | 2          | 2025-02-24
-20          | 7       | 18         | 2025-03-04", theme: auto
+1           | 1       | 4          | 2025-03-05
+2           | 3       | 6          | 2025-03-20
+3           | 4       | 10         | 2025-03-11
+4           | 6       | 9          | 2025-04-02
+5           | 1       | 11         | 2025-01-28
+6           | 3       | 11         | 2025-03-31
+7           | 8       | 3          | 2025-01-21
+8           | 6       | 17         | 2025-01-30
+9           | 8       | 2          | 2025-04-03
+10          | 7       | 8          | 2025-01-21
+11          | 8       | 13         | 2025-03-29
+12          | 8       | 11         | 2025-03-11
+13          | 5       | 3          | 2025-01-08
+14          | 10      | 8          | 2025-02-10
+15          | 7       | 11         | 2025-01-10
+16          | 1       | 19         | 2025-02-24
+17          | 10      | 12         | 2025-01-25
+18          | 2       | 15         | 2025-01-30
+19          | 5       | 19         | 2025-03-08
+20          | 9       | 19         | 2025-03-27", theme: auto
 )
 
 = 步骤四：数据库操作
 
+== 用户(User)表的操作
+
+```py
+def add_user(username, password_hash, phone=None, email=None, credit_score=0):
+    cursor.execute('''
+    INSERT INTO User (username, password_hash, phone, email, credit_score)
+    VALUES (?, ?, ?, ?, ?)
+    ''', (username, password_hash, phone, email, credit_score))
+    conn.commit()
+    return cursor.lastrowid
+
+def get_user(user_id=None, username=None, phone=None, email=None):
+    query = 'SELECT * FROM User WHERE '
+    conditions = []
+    params = []
+    
+    if user_id:
+        conditions.append('user_id = ?')
+        params.append(user_id)
+    if username:
+        conditions.append('username = ?')
+        params.append(username)
+    if phone:
+        conditions.append('phone = ?')
+        params.append(phone)
+    if email:
+        conditions.append('email = ?')
+        params.append(email)
+    
+    if not conditions:
+        return None
+    
+    query += ' AND '.join(conditions)
+    cursor.execute(query, params)
+    return cursor.fetchone()
+
+def update_user(user_id, username=None, password_hash=None, phone=None, email=None, credit_score=None):
+    updates = []
+    params = []
+    
+    if username:
+        updates.append('username = ?')
+        params.append(username)
+    if password_hash:
+        updates.append('password_hash = ?')
+        params.append(password_hash)
+    if phone:
+        updates.append('phone = ?')
+        params.append(phone)
+    if email:
+        updates.append('email = ?')
+        params.append(email)
+    if credit_score is not None:
+        updates.append('credit_score = ?')
+        params.append(credit_score)
+    
+    if not updates:
+        return False
+    
+    params.append(user_id)
+    query = 'UPDATE User SET ' + ', '.join(updates) + ' WHERE user_id = ?'
+    cursor.execute(query, params)
+    conn.commit()
+    return cursor.rowcount > 0
+
+def delete_user(user_id):
+    cursor.execute('DELETE FROM User WHERE user_id = ?', (user_id,))
+    conn.commit()
+    return cursor.rowcount > 0
+```
+
+```py
+# 添加用户
+user1_id = add_user('john_doe', 'hashed_password123', '1234567890', 'john@example.com')
+user2_id = add_user('jane_smith', 'hashed_password456', '0987654321', 'jane@example.com', 50)
+print(f"Added users with IDs: {user1_id}, {user2_id}")
+
+# 查询用户
+user1 = get_user(user_id=user1_id)
+user_by_phone = get_user(phone='1234567890')
+print("User1:", user1)
+print("User by phone:", user_by_phone)
+
+# 更新用户
+update_success = update_user(user1_id, email='john.doe@newexample.com', credit_score=75)
+print(f"Update successful: {update_success}")
+updated_user = get_user(user_id=user1_id)
+print("Updated user:", updated_user)
+
+# 删除用户
+delete_success = delete_user(user2_id)
+print(f"Delete successful: {delete_success}")
+```
+#raw(
+	"Added users with IDs: 1, 2
+User1: (1, 'john_doe', 'hashed_password123', '1234567890', 'john@example.com', 0, '2025-04-12 07:56:45', None, 'active')
+User by phone: (1, 'john_doe', 'hashed_password123', '1234567890', 'john@example.com', 0, '2025-04-12 07:56:45', None, 'active')
+Update successful: True
+Updated user: (1, 'john_doe', 'hashed_password123', '1234567890', 'john.doe@newexample.com', 75, '2025-04-12 07:56:45', None, 'active')
+Delete successful: True", theme: auto
+)
+
+== 商品(Product)表的操作
+
+```py
+def add_product(seller_id, title, description, price, original_price=None, 
+                condition=None, location=None):
+    cursor.execute('''
+    INSERT INTO Product (seller_id, title, description, price, original_price, condition, location)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    ''', (seller_id, title, description, price, original_price, condition, location))
+    conn.commit()
+    return cursor.lastrowid
+
+def get_products(product_id=None, seller_id=None, title=None, condition=None, status=None, min_price=None, max_price=None):
+    query = 'SELECT * FROM Product WHERE '
+    conditions = []
+    params = []
+    
+    if product_id:
+        conditions.append('product_id = ?')
+        params.append(product_id)
+    if seller_id:
+        conditions.append('seller_id = ?')
+        params.append(seller_id)
+    if title:
+        conditions.append('title LIKE ?')
+        params.append(f'%{title}%')
+    if condition:
+        conditions.append('condition = ?')
+        params.append(condition)
+    if status:
+        conditions.append('status = ?')
+        params.append(status)
+    if min_price:
+        conditions.append('price >= ?')
+        params.append(min_price)
+    if max_price:
+        conditions.append('price <= ?')
+        params.append(max_price)
+    
+    if not conditions:
+        query = 'SELECT * FROM Product'
+    else:
+        query += ' AND '.join(conditions)
+    
+    cursor.execute(query, params)
+    return cursor.fetchall()
+
+def update_product(product_id, title=None, description=None, price=None, 
+                   original_price=None, condition=None, location=None, status=None):
+    updates = []
+    params = []
+    
+    if title:
+        updates.append('title = ?')
+        params.append(title)
+    if description:
+        updates.append('description = ?')
+        params.append(description)
+    if price:
+        updates.append('price = ?')
+        params.append(price)
+    if original_price:
+        updates.append('original_price = ?')
+        params.append(original_price)
+    if condition:
+        updates.append('condition = ?')
+        params.append(condition)
+    if location:
+        updates.append('location = ?')
+        params.append(location)
+    if status:
+        updates.append('status = ?')
+        params.append(status)
+    
+    if not updates:
+        return False
+    
+    params.append(product_id)
+    query = 'UPDATE Product SET ' + ', '.join(updates) + ' WHERE product_id = ?'
+    cursor.execute(query, params)
+    conn.commit()
+    return cursor.rowcount > 0
+
+def delete_product(product_id):
+    cursor.execute('DELETE FROM Product WHERE product_id = ?', (product_id,))
+    conn.commit()
+    return cursor.rowcount > 0
+```
+
+```py
+# 添加产品
+product1_id = add_product(user1_id, 'iPhone 12', 'Like new iPhone 12, 128GB', 599.99, 799.99, 'like new', 'New York')
+product2_id = add_product(user1_id, 'MacBook Pro', '2020 MacBook Pro 13', 999.99, 1299.99, 'good', 'New York')
+print(f"Added products with IDs: {product1_id}, {product2_id}")
+
+# 查询产品
+products = get_products(seller_id=user1_id)
+print("All products by seller:", products)
+expensive_products = get_products(min_price=800)
+print("Expensive products:", expensive_products)
+
+# 更新产品
+update_success = update_product(product1_id, price=549.99, status='reserved')
+print(f"Update successful: {update_success}")
+updated_product = get_products(product_id=product1_id)
+print("Updated product:", updated_product)
+
+# 删除产品
+delete_success = delete_product(product2_id)
+print(f"Delete successful: {delete_success}")
+```
+
+#raw(
+	"Added products with IDs: 1, 2
+All products by seller: [(1, 1, 'iPhone 12', 'Like new iPhone 12, 128GB', 599.99, 799.99, 'like new', 'New York', '2025-04-12 07:57:45', 'available', 0, 0), (2, 1, 'MacBook Pro', '2020 MacBook Pro 13', 999.99, 1299.99, 'good', 'New York', '2025-04-12 07:57:45', 'available', 0, 0)]
+Expensive products: [(2, 1, 'MacBook Pro', '2020 MacBook Pro 13', 999.99, 1299.99, 'good', 'New York', '2025-04-12 07:57:45', 'available', 0, 0)]
+Update successful: True
+Updated product: [(1, 1, 'iPhone 12', 'Like new iPhone 12, 128GB', 549.99, 799.99, 'like new', 'New York', '2025-04-12 07:57:45', 'reserved', 0, 0)]
+Delete successful: True"
+)
+
+== 订单(Order)表的操作
+
+```py
+def create_order(product_id, buyer_id, seller_id, price, payment_method=None, shipping_address=None):
+    cursor.execute('''
+    INSERT INTO Order_ (product_id, buyer_id, seller_id, price, payment_method, shipping_address)
+    VALUES (?, ?, ?, ?, ?, ?)
+    ''', (product_id, buyer_id, seller_id, price, payment_method, shipping_address))
+    conn.commit()
+    return cursor.lastrowid
+
+def get_orders(order_id=None, buyer_id=None, seller_id=None, product_id=None, status=None):
+    query = 'SELECT * FROM Order_ WHERE '
+    conditions = []
+    params = []
+    
+    if order_id:
+        conditions.append('order_id = ?')
+        params.append(order_id)
+    if buyer_id:
+        conditions.append('buyer_id = ?')
+        params.append(buyer_id)
+    if seller_id:
+        conditions.append('seller_id = ?')
+        params.append(seller_id)
+    if product_id:
+        conditions.append('product_id = ?')
+        params.append(product_id)
+    if status:
+        conditions.append('status = ?')
+        params.append(status)
+    
+    if not conditions:
+        query = 'SELECT * FROM Order_'
+    else:
+        query += ' AND '.join(conditions)
+    
+    cursor.execute(query, params)
+    return cursor.fetchall()
+
+def update_order(order_id, status=None, payment_method=None, shipping_address=None, tracking_number=None):
+    updates = []
+    params = []
+    
+    if status:
+        updates.append('status = ?')
+        params.append(status)
+    if payment_method:
+        updates.append('payment_method = ?')
+        params.append(payment_method)
+    if shipping_address:
+        updates.append('shipping_address = ?')
+        params.append(shipping_address)
+    if tracking_number:
+        updates.append('tracking_number = ?')
+        params.append(tracking_number)
+    
+    if not updates:
+        return False
+    
+    params.append(order_id)
+    query = 'UPDATE Order_ SET ' + ', '.join(updates) + ' WHERE order_id = ?'
+    cursor.execute(query, params)
+    conn.commit()
+    return cursor.rowcount > 0
+
+
+def delete_order(order_id):
+    cursor.execute('DELETE FROM Order_ WHERE order_id = ?', (order_id,))
+    conn.commit()
+    return cursor.rowcount > 0
+```
+
+```py
+# 添加另一个用户用于购买
+buyer_id = add_user('buyer_user', 'hashed_password789', '5551234567', 'buyer@example.com')
+
+# 创建订单
+order1_id = create_order(product1_id, buyer_id, user1_id, 549.99, 'credit_card', '123 Main St, Anytown')
+print(f"Created order with ID: {order1_id}")
+
+# 查询订单
+orders = get_orders(buyer_id=buyer_id)
+print("Orders by buyer:", orders)
+
+# 更新订单
+update_success = update_order(order1_id, status='paid', tracking_number='USPS123456789')
+print(f"Update successful: {update_success}")
+updated_order = get_orders(order_id=order1_id)
+print("Updated order:", updated_order)
+
+# 删除订单
+delete_success = delete_order(order1_id)
+print(f"Delete successful: {delete_success}")
+```
+
+#raw(
+	"Created order with ID: 1
+Orders by buyer: [(1, 1, 3, 1, '2025-04-12 07:58:30', 549.99, 'pending', 'credit_card', '123 Main St, Anytown', None)]
+Update successful: True
+Updated order: [(1, 1, 3, 1, '2025-04-12 07:58:30', 549.99, 'paid', 'credit_card', '123 Main St, Anytown', 'USPS123456789')]
+Delete successful: True
+	", theme: auto
+)
+
 = 步骤五：前端web页面开发
+
+== 首页
+
+#figure(
+	align(center, image("1_home.png", width: 100%)),
+	caption: [首页]
+)
+
+== 我的收藏
+
+#figure(
+	align(center, image("2_favorite.png", width: 100%)),
+	caption: [我的收藏]
+)
+
+== 商品列表
+
+#figure(
+	align(center, image("3_product.png", width: 100%)),
+	caption: [商品列表]
+)
+
+== 订单管理
+
+#figure(
+	align(center, image("4_orders.png", width: 100%)),
+	caption: [订单管理]
+)
+
+== 登录界面
+
+#figure(
+	align(center, image("5_login.png", width: 100%)),
+	caption: [登录界面]
+)

@@ -13,6 +13,7 @@
             <ul>
                 <li><a href="{{ url_for('home') }}">首页</a></li>
                 <li><a href="{{ url_for('favorites') }}">我的收藏</a></li>
+                <li><a href="{{ url_for('product_list') }}">商品列表</a></li>
                 <li><a href="{{ url_for('order_management') }}">订单管理</a></li>
                 {% if 'username' in session %}
                     <li>你好，{{ session['username'] }}</li>
