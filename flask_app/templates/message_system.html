@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>消息</h1>
+<div class="messages">
+    {% for message in messages %}
+    <div class="message">
+        <strong>{{ message.sender }}:</strong>
+        <p>{{ message.text }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<h3>发送消息</h3>
+<form method="POST" action="{{ url_for('send_message') }}">
+    <label for="message_text">消息内容:</label>
+    <textarea id="message_text" name="message_text" required></textarea>
+    
+    <button type="submit">发送</button>
+</form>
+{% endblock %}
