@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>订单管理</h1>
+<div class="order-list">
+    {% for order in orders %}
+    <div class="order-item">
+        <p>商品：{{ order.product_name }}</p>
+        <p>状态：{{ order.status }}</p>
+        
+        {% if order.status == '待支付' %}
+        <form method="POST" action="{{ url_for('pay_order', order_id=order.id) }}">
+            <button type="submit">支付</button>
+        </form>
+        {% elif order.status == '已支付' %}
+        <form method="POST" action="{{ url_for('ship_order', order_id=order.id) }}">
+            <button type="submit">发货</button>
+        </form>
+        {% elif order.status == '已发货' %}
+        <form method="POST" action="{{ url_for('confirm_receipt', order_id=order.id) }}">
+            <button type="submit">确认收货</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
