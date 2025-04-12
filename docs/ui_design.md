@@ -3,7 +3,7 @@
 ### 项目结构
 
 ```
-/xiaoyufish
+/flask_app
     /static
         /css
             style.css
