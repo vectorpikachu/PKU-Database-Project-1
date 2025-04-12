@@ -50,7 +50,7 @@ def insert_message(sender_id, receiver_id, product_id, content, send_time, is_re
         conn.rollback()
         return "fail"
 
-def insert_message(user_id, product_id, add_date):
+def insert_favorite(user_id, product_id, add_date):
     try:
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
