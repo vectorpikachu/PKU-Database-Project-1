@@ -1,21 +1,94 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<h1>消息</h1>
-<div class="messages">
-    {% for message in messages %}
-    <div class="message">
-        <strong>{{ message.sender }}:</strong>
-        <p>{{ message.text }}</p>
+<div class="container mt-4">
+    <h2>消息中心</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">所有消息</a>
+                <a href="#" class="list-group-item list-group-item-action">未读消息</a>
+                <a href="#" class="list-group-item list-group-item-action">已发送</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h5>消息列表</h5>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        <ul class="list-group">
+                            {% for msg in messages %}
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <h6>{{ msg.sender_name }}</h6>
+                                    <small class="text-muted">{{ msg.send_time }}</small>
+                                </div>
+                                <p>{{ msg.content }}</p>
+                                {% if not msg.is_read %}
+                                <span class="badge bg-primary">未读</span>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted">暂无消息</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5>发送新消息</h5>
+                </div>
+                <div class="card-body">
+                    <form id="sendMessageForm">
+                        <div class="mb-3">
+                            <label for="receiverId" class="form-label">接收者ID</label>
+                            <input type="text" class="form-control" id="receiverId" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productId" class="form-label">相关商品ID</label>
+                            <input type="text" class="form-control" id="productId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageContent" class="form-label">消息内容</label>
+                            <textarea class="form-control" id="messageContent" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    {% endfor %}
 </div>
 
-<h3>发送消息</h3>
-<form method="POST" action="{{ url_for('send_message') }}">
-    <label for="message_text">消息内容:</label>
-    <textarea id="message_text" name="message_text" required></textarea>
-    
-    <button type="submit">发送</button>
-</form>
+<script src="/static/js/script.js"></script>
+<script>
+    document.getElementById('sendMessageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const receiverId = document.getElementById('receiverId').value;
+        const productId = document.getElementById('productId').value;
+        const content = document.getElementById('messageContent').value;
+        
+        fetch('/send_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `receiver_id=${encodeURIComponent(receiverId)}&product_id=${encodeURIComponent(productId)}&content=${encodeURIComponent(content)}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('消息发送成功');
+                location.reload();
+            } else {
+                alert(data.message || '发送失败');
+            }
+        });
+    });
+</script>
 {% endblock %}

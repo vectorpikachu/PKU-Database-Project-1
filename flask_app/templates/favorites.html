@@ -1,15 +1,59 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<h1>我的收藏</h1>
-<div class="favorites-list">
-    {% for product in favorites %}
-    <div class="product-item">
-        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <a href="{{ url_for('product_detail', product_id=product.id) }}" class="btn">查看详情</a>
+<div class="container mt-4">
+    <h2>我的收藏</h2>
+    <div class="row">
+        {% if favorites %}
+            {% for item in favorites %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="{{ item.product_image }}" class="card-img-top" alt="{{ item.product_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.product_name }}</h5>
+                        <p class="card-text">¥{{ item.price }}</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="/product/{{ item.product_id }}" class="btn btn-sm btn-primary">查看详情</a>
+                            <button class="btn btn-sm btn-outline-danger remove-favorite" data-product-id="{{ item.product_id }}">移除</button>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        收藏于 {{ item.add_date }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info">您还没有收藏任何商品</div>
+            </div>
+        {% endif %}
     </div>
-    {% endfor %}
 </div>
+
+<script src="/static/js/script.js"></script>
+<script>
+    document.querySelectorAll('.remove-favorite').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            
+            fetch('/remove_favorite', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `product_id=${encodeURIComponent(productId)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('已移除收藏');
+                    location.reload();
+                } else {
+                    alert(data.message || '操作失败');
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}

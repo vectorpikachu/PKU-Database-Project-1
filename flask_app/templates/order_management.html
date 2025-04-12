@@ -1,27 +1,71 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-<h1>订单管理</h1>
-<div class="order-list">
-    {% for order in orders %}
-    <div class="order-item">
-        <p>商品：{{ order.product_name }}</p>
-        <p>状态：{{ order.status }}</p>
-        
-        {% if order.status == '待支付' %}
-        <form method="POST" action="{{ url_for('pay_order', order_id=order.id) }}">
-            <button type="submit">支付</button>
-        </form>
-        {% elif order.status == '已支付' %}
-        <form method="POST" action="{{ url_for('ship_order', order_id=order.id) }}">
-            <button type="submit">发货</button>
-        </form>
-        {% elif order.status == '已发货' %}
-        <form method="POST" action="{{ url_for('confirm_receipt', order_id=order.id) }}">
-            <button type="submit">确认收货</button>
-        </form>
-        {% endif %}
+<div class="container mt-4">
+    <h2>订单管理</h2>
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">全部订单</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">待付款</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">待发货</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">待收货</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">已完成</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            {% if orders %}
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>订单编号</th>
+                            <th>商品</th>
+                            <th>价格</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_id }}</td>
+                            <td>
+                                <a href="/product/{{ order.product_id }}">{{ order.product_name }}</a>
+                            </td>
+                            <td>¥{{ order.price }}</td>
+                            <td>
+                                <span class="badge 
+                                    {% if order.status == 'completed' %}bg-success
+                                    {% elif order.status == 'pending' %}bg-warning
+                                    {% elif order.status == 'shipped' %}bg-info
+                                    {% else %}bg-secondary{% endif %}">
+                                    {{ order.status }}
+                                </span>
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-outline-primary">详情</a>
+                                {% if order.status == 'pending' %}
+                                <button class="btn btn-sm btn-outline-success">支付</button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="text-muted">暂无订单</p>
+            {% endif %}
+        </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
